@@ -1,0 +1,79 @@
+<!--
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>PhoneGap</title>
+    <script type="text/javascript" charset="utf8" src="cordova-2.2.0.js"></script>
+  </head>
+  <body>
+      <h1>Hello PhoneGap</h1>
+      
+      <p>
+      テスト
+      </p>
+  </body>
+</html>
+--> 
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello PhoneGap Notification</title>
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+    <meta charset="utf-8">
+    
+    <script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
+    <script type="text/javascript">
+      function onBodyLoad()
+      {       
+          document.addEventListener("deviceready", onDeviceReady, false);
+      }
+
+      function onDeviceReady___()
+      {
+          // do your thing!
+          navigator.notification.alert("PhoneGap is working")
+      }
+      function onDeviceReady____()
+      {
+          navigator.notification.alert(
+              "ようこそADCへ！", 
+              alertConfirm, 
+              "Wecome", 
+              "確認");
+      }
+                      
+      function alertConfirm() {
+          document.getElementById("confirm").innerHTML = "確認ボタンが押されました。";
+      }
+
+      function onDeviceReady()
+      {
+    	  navigator.notification.beep(5);
+    	  navigator.notification.vibrate(3000);
+    	  navigator.notification.confirm(
+              "PhoneGapは好きですか？", 
+              onConfirm, 
+              "質問", 
+              "いいえ, はい");
+      }
+                      
+      function onConfirm(buttonIndex) {
+          if (buttonIndex==1) {
+              button = "いいえ";
+          } else if (buttonIndex==2) {
+              button = "はい";
+          } else {
+              button = "unknown";
+          }
+          document.getElementById("confirm").innerHTML = button + " が押されました。";
+      }
+      </script>
+  </head>
+
+  <body onload="onBodyLoad()">
+    <h1>Hey, it's PhoneGap!</h1>
+    <div id="confirm"></div>
+  </body>
+</html>
